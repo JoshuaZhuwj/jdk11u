@@ -88,6 +88,7 @@ define_pd_global(bool,   InlineUnsafeOps,            true);
 define_pd_global(uintx,  InitialCodeCacheSize,       160*K);
 define_pd_global(uintx,  ReservedCodeCacheSize,      32*M);
 define_pd_global(uintx,  NonProfiledCodeHeapSize,    0);
+define_pd_global(uintx,  NonProfiledHotCodeHeapSize, 0);
 define_pd_global(uintx,  ProfiledCodeHeapSize,       0);
 define_pd_global(uintx,  NonNMethodCodeHeapSize,     32*M);
 
@@ -724,6 +725,9 @@ define_pd_global(uint64_t,MaxRAM,                    1ULL*G);
                                                                             \
   diagnostic(bool, PrintNativeNMethods, false,                              \
           "Print assembly code for native nmethods when generated")         \
+                                                                            \
+  diagnostic(bool, TraceNonProfiledHotCodeHeapActivities, false,            \
+          "Trace activities of NonProfiledHotCodeHeap")                     \
                                                                             \
   develop(bool, PrintDebugInfo, false,                                      \
           "Print debug information for all nmethods when generated")        \
@@ -1952,6 +1956,10 @@ define_pd_global(uint64_t,MaxRAM,                    1ULL*G);
                                                                             \
   product_pd(uintx, NonProfiledCodeHeapSize,                                \
           "Size of code heap with non-profiled methods (in bytes)")         \
+          range(0, max_uintx)                                               \
+                                                                            \
+  product/*_pd*/(uintx, NonProfiledHotCodeHeapSize, 0,                      \
+          "Size of hot code heap with non-profiled methods (in bytes)")     \
           range(0, max_uintx)                                               \
                                                                             \
   product_pd(uintx, ProfiledCodeHeapSize,                                   \

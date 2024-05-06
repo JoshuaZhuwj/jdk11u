@@ -145,6 +145,9 @@ void set_client_compilation_mode() {
   if (FLAG_IS_DEFAULT(NonProfiledCodeHeapSize)) {
     FLAG_SET_ERGO(uintx, NonProfiledCodeHeapSize, 27*M);
   }
+//  if (FLAG_IS_DEFAULT(NonProfiledHotCodeHeapSize)) {
+//    FLAG_SET_ERGO(uintx, NonProfiledHotCodeHeapSize, 0);
+//  }
   if (FLAG_IS_DEFAULT(ProfiledCodeHeapSize)) {
     FLAG_SET_ERGO(uintx, ProfiledCodeHeapSize, 0);
   }
