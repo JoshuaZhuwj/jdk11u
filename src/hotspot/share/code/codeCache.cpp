@@ -293,6 +293,7 @@ void CodeCache::initialize_heaps() {
   // We do not need the non-profiled HotCodeHeap, use all space for the non-nmethod CodeHeap
   if (!heap_available(CodeBlobType::MethodHotNonProfiled)) {
     non_nmethod_size += non_profiled_hot_size;
+    cache_size += non_profiled_hot_size;
     non_profiled_hot_size = 0;
   }
 
