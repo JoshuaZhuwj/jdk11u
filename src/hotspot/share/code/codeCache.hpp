@@ -302,9 +302,7 @@ class CodeCache : AllStatic {
 
   // Returns the codeBlobType for the given method and compilation level
   static int get_code_blob_type(const methodHandle& method, int comp_level, bool alloc_in_non_profiled_hot_code_heap) {
-    if (alloc_in_non_profiled_hot_code_heap) {
-      assert(is_c2_compile(comp_level), "must be compiled by c2");
-
+    if (alloc_in_non_profiled_hot_code_heap && is_c2_compile(comp_level)) {
       if (!method->is_native()) {
         if (CodeCache::heap_available(CodeBlobType::MethodHotNonProfiled)) {
           return CodeBlobType::MethodHotNonProfiled;

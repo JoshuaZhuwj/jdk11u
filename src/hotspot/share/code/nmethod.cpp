@@ -446,8 +446,6 @@ nmethod* nmethod::new_native_nmethod(const methodHandle& method,
     CodeOffsets offsets;
     offsets.set_value(CodeOffsets::Verified_Entry, vep_offset);
     offsets.set_value(CodeOffsets::Frame_Complete, frame_complete);
-    // TODO: change blob_type into "CodeBlobType::MethodNonProfiled" directly?
-    assert(method->is_native(), "");
     int code_blob_type = CodeCache::get_code_blob_type(method, CompLevel_none, false);
     nm = new (native_nmethod_size, code_blob_type) nmethod(method(), compiler_none, native_nmethod_size,
                                             compile_id, &offsets,
