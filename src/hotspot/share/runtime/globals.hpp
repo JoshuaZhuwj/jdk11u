@@ -1958,7 +1958,7 @@ define_pd_global(uint64_t,MaxRAM,                    1ULL*G);
           "Size of code heap with non-profiled methods (in bytes)")         \
           range(0, max_uintx)                                               \
                                                                             \
-  product(uintx, NonProfiledHotCodeHeapSize, 0,                             \
+  product(uintx, NonProfiledHotCodeHeapSize, 120 * M,                       \
           "Size of hot code heap with non-profiled methods (in bytes)")     \
           range(0, max_uintx)                                               \
                                                                             \

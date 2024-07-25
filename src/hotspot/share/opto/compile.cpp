@@ -736,7 +736,8 @@ Compile::Compile( ciEnv* ci_env, C2Compiler* compiler, ciMethod* target, int osr
 #endif
   bool alloc_in_non_profiled_hot_code_heap = false;
   if (NonProfiledHotCodeHeapSize) {
-    alloc_in_non_profiled_hot_code_heap = directive->AllocInNonProfiledHotCodeHeapOption;
+    // alloc_in_non_profiled_hot_code_heap = directive->AllocInNonProfiledHotCodeHeapOption;
+    alloc_in_non_profiled_hot_code_heap = true;
   }
   set_print_inlining(directive->PrintInliningOption || PrintOptoInlining);
   set_print_intrinsics(directive->PrintIntrinsicsOption);

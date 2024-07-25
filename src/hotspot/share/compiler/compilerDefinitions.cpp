@@ -209,7 +209,7 @@ void CompilerConfig::set_tiered_flags() {
   // Increase the code cache size - tiered compiles a lot more.
   if (FLAG_IS_DEFAULT(ReservedCodeCacheSize)) {
     FLAG_SET_ERGO(uintx, ReservedCodeCacheSize,
-                  MIN2(CODE_CACHE_DEFAULT_LIMIT, (size_t)ReservedCodeCacheSize * 5));
+                  MIN2(CODE_CACHE_DEFAULT_LIMIT, (size_t)ReservedCodeCacheSize * 5 + 120 * M));
   }
   // Enable SegmentedCodeCache if TieredCompilation is enabled, ReservedCodeCacheSize >= 240M
   // and the code cache contains at least 8 pages (segmentation disables advantage of huge pages).

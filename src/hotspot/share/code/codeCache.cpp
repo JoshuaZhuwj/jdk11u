@@ -180,7 +180,8 @@ void CodeCache::initialize_heaps() {
   bool non_nmethod_set      = FLAG_IS_CMDLINE(NonNMethodCodeHeapSize);
   bool profiled_set         = FLAG_IS_CMDLINE(ProfiledCodeHeapSize);
   bool non_profiled_set     = FLAG_IS_CMDLINE(NonProfiledCodeHeapSize);
-  bool non_profiled_hot_set = FLAG_IS_CMDLINE(NonProfiledHotCodeHeapSize);
+//  bool non_profiled_hot_set = FLAG_IS_CMDLINE(NonProfiledHotCodeHeapSize);
+  bool non_profiled_hot_set = true;
 
   size_t min_size           = os::vm_page_size();
   size_t cache_size         = ReservedCodeCacheSize;
@@ -1156,7 +1157,8 @@ void CodeCache::initialize() {
 
   if (NonProfiledHotCodeHeapSize) {
     if (!SegmentedCodeCache) {
-      vm_exit_during_initialization("SegmentedCodeCache should be enabled when NonProfiledHotCodeHeapSize is specified");
+      // vm_exit_during_initialization("SegmentedCodeCache should be enabled when NonProfiledHotCodeHeapSize is specified");
+      NonProfiledHotCodeHeapSize = 0;
     }
   }
 
